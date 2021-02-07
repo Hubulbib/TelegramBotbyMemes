@@ -1,6 +1,7 @@
 import telebot
 from telebot import types
 import config
+import sql
 
 bot = telebot.TeleBot(config.TOKEN)
 
@@ -32,7 +33,6 @@ def mem(message):
             item2 = types.InlineKeyboardButton("Скучно", callback_data='bad')
             markup.add(item1, item2)
             bot.send_photo(id, i, reply_markup=markup)
-
 
 
 
