@@ -27,22 +27,13 @@ def mem(message):
     id = message.chat.id
     if message.text == "Давай уже кидай мемы":
         for i in memes:
-            bot.send_photo(id, i)
             markup = types.InlineKeyboardMarkup(row_width=2)
             item1 = types.InlineKeyboardButton("Мне нравится", callback_data='good')
             item2 = types.InlineKeyboardButton("Скучно", callback_data='bad')
             markup.add(item1, item2)
+            bot.send_photo(id, i, reply_markup=markup)
 
 
-@bot.callback_query_handlers(func = lambda call: True)
-def callback_inline(call):
-    try:
-        if call.message:
-            if call.data == 'good':
 
-            if call.data == 'bad':
-                
-    except Exception as e:
-        print(repr(e))
 
 bot.polling(none_stop=True)
